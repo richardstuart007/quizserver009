@@ -1,7 +1,7 @@
 {
   "name": "quizserver",
   "homepage": "https://richardstuart007.github.io/quizserver008",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "description": "Quiz Server",
   "main": "script.js",
   "scripts": {
@@ -26,5 +26,12 @@
   },
   "engines": {
     "node": "16.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richardstuart007/quizserver009.git"
+  },
+  "bugs": {
+    "url": "https://github.com/richardstuart007/quizserver009/issues"
   }
 }
