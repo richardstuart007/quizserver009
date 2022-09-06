@@ -123,14 +123,18 @@ function logRawTables(req, fetchAction, fetchRoute, handler) {
   //
   //  Format Message & Log
   //
-  let logMessage = `Server.. ${logCounter} Time:${TimeStamp} Handler(${handler}) Client(${sqlClient}) Action(${fetchAction}) Route(${fetchRoute}) Sql(${sqlAction})`
-  if (sqlTable) logMessage = logMessage + ` sqlTable(${sqlTable}) `
-  if (sqlString) logMessage = logMessage + ` sqlString(${sqlString}) `
-  if (sqlWhere) logMessage = logMessage + ` sqlWhere(${sqlWhere}) `
+  let logMessage = `Server.. ${logCounter} Time:${TimeStamp}`
+  if (sqlTable) logMessage = logMessage + ` sqlTable(${sqlTable})`
+  logMessage =
+    logMessage +
+    ` Handler(${handler}) Client(${sqlClient}) Action(${fetchAction}) Route(${fetchRoute}) Sql(${sqlAction})`
+
+  if (sqlString) logMessage = logMessage + ` sqlString(${sqlString})`
+  if (sqlWhere) logMessage = logMessage + ` sqlWhere(${sqlWhere})`
   if (sqlOrderByRaw)
-    logMessage = logMessage + ` sqlOrderByRaw(${sqlOrderByRaw}) `
-  if (sqlRow) logMessage = logMessage + ` sqlRow(Data) `
-  if (sqlKeyName) logMessage = logMessage + ` sqlKeyName(${sqlKeyName}) `
+    logMessage = logMessage + ` sqlOrderByRaw(${sqlOrderByRaw})`
+  if (sqlRow) logMessage = logMessage + ` sqlRow(Data)`
+  if (sqlKeyName) logMessage = logMessage + ` sqlKeyName(${sqlKeyName})`
 
   console.log(logMessage)
 }

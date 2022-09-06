@@ -30,6 +30,7 @@ async function handleRaw(req, res, db, logCounter) {
   //
   const TimeStamp = format(new Date(), 'yyLLddHHmmss')
   let logMessage = `Handler. ${logCounter} Time:${TimeStamp}`
+
   try {
     //
     // Initialise Global Variables
@@ -48,7 +49,14 @@ async function handleRaw(req, res, db, logCounter) {
     //
     //  Action type not sent
     //
-    const { sqlAction } = bodyParms
+    const { sqlAction, sqlTable } = bodyParms
+    //
+    //  Table to message
+    //
+    if (sqlTable) logMessage = logMessage + ` sqlTable(${sqlTable})`
+    //
+    //  Check Action passed
+    //
     if (!sqlAction) {
       returnObject.returnMessage = `sqlAction not sent as Body Parameters`
       returnObject.returnCatchFunction = CatchFunction
@@ -69,6 +77,7 @@ async function handleRaw(req, res, db, logCounter) {
       returnObject.returnMessage = `sqlAction ${sqlAction}: sqlAction not valid`
       return res.status(400).json(returnObject)
     }
+
     //
     // Process Request Promises(ALL)
     //
@@ -97,7 +106,7 @@ async function handleRaw(req, res, db, logCounter) {
     //  Log return values
     //
     const records = Object.keys(returnObject.returnRows).length
-    logMessage = logMessage + ` Records returned ${records}`
+    logMessage = logMessage + ` records(${records})`
     console.log(logMessage)
     return res.status(200).json(returnObject.returnRows)
     //
