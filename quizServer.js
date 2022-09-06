@@ -24,12 +24,13 @@ let logCounter = 0
 // Constants
 //
 const {
-  PORT,
+  KNEX_PORT,
   KNEX_CLIENT,
   KNEX_HOST,
   KNEX_USER,
   KNEX_PWD,
   KNEX_DATABASE,
+  PORT,
   URL_SIGNIN,
   URL_TABLES,
   URL_REGISTER,
@@ -42,11 +43,18 @@ const db = knex({
   client: KNEX_CLIENT,
   connection: {
     host: KNEX_HOST,
+    port: KNEX_PORT,
     user: KNEX_USER,
     password: KNEX_PWD,
     database: KNEX_DATABASE
   }
 })
+//
+//
+//
+console.log(
+  `Database Connection==> Client(${KNEX_CLIENT}) host(${KNEX_HOST}) port(${KNEX_PORT}) user(${KNEX_USER}) database(${KNEX_DATABASE})`
+)
 //
 // Express & Cors
 //
@@ -85,8 +93,10 @@ app.post(URL_REGISTER, (req, res) => {
 //..............................................................................
 //.  Start Server
 //.............................................................................
+const TimeStamp = format(new Date(), 'yyLLddHHmmss')
+let logMessage = `${logCounter} Time:${TimeStamp} Quiz Server running on LOCAL PORT ${PORT}`
 app.listen(PORT, () => {
-  console.log(`Quiz Server running on port ${PORT}`)
+  console.log(logMessage)
 })
 //.............................................................................
 //.  Log the Body to the console
@@ -108,7 +118,7 @@ function logRawTables(req, fetchAction, fetchRoute) {
   //
   //  Timestamp and Counter
   //
-  const TimeStamp = format(new Date(), 'HHmmss')
+  const TimeStamp = format(new Date(), 'yyLLddHHmmss')
   logCounter = logCounter + 1
   //
   //  Format Message & Log
