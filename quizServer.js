@@ -65,12 +65,12 @@ app.use(cors())
 //.  Routes - Tables
 //.............................................................................
 app.post(URL_TABLES, (req, res) => {
-  logRawTables(req, 'POST', 'RAW')
+  logRawTables(req, 'POST', 'RAW', 's_RAW')
   s_Raw.handleRaw(req, res, db, logCounter)
 })
 
 app.delete(URL_TABLES, (req, res) => {
-  logRawTables(req, 'DELETE', 'RAW')
+  logRawTables(req, 'DELETE', 'RAW', 's_RAW')
   s_Raw.handleRaw(req, res, db, logCounter)
 })
 //.............................................................................
@@ -94,14 +94,14 @@ app.post(URL_REGISTER, (req, res) => {
 //.  Start Server
 //.............................................................................
 const TimeStamp = format(new Date(), 'yyLLddHHmmss')
-let logMessage = `SERVER.. ${logCounter} Time:${TimeStamp} Quiz Server running on LOCAL PORT ${PORT}`
+let logMessage = `SERVER.. ${logCounter} Time:${TimeStamp} Quiz Server running on PORT ${PORT}`
 app.listen(PORT, () => {
   console.log(logMessage)
 })
 //.............................................................................
 //.  Log the Body to the console
 //.............................................................................
-function logRawTables(req, fetchAction, fetchRoute) {
+function logRawTables(req, fetchAction, fetchRoute, handler) {
   //
   //  Destructure Parameters
   //
@@ -123,7 +123,7 @@ function logRawTables(req, fetchAction, fetchRoute) {
   //
   //  Format Message & Log
   //
-  let logMessage = `SERVER.. ${logCounter} Time:${TimeStamp} sqlClient(${sqlClient}) fetchAction(${fetchAction}) fetchRoute(${fetchRoute}) sqlAction(${sqlAction}) `
+  let logMessage = `Server.. ${logCounter} Time:${TimeStamp} Handler(${handler}) Client(${sqlClient}) Action(${fetchAction}) Route(${fetchRoute}) Sql(${sqlAction})`
   if (sqlTable) logMessage = logMessage + ` sqlTable(${sqlTable}) `
   if (sqlString) logMessage = logMessage + ` sqlString(${sqlString}) `
   if (sqlWhere) logMessage = logMessage + ` sqlWhere(${sqlWhere}) `
