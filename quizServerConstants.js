@@ -2,14 +2,14 @@
 //  Database
 //
 exports.KNEX_CLIENT = 'pg'
-exports.KNEX_HOST = '127.0.0.1'
-exports.KNEX_USER = 'richa'
-exports.KNEX_PWD = 'london'
-exports.KNEX_DATABASE = 'Quiz008'
+exports.KNEX_HOST = 'containers-us-west-71.railway.app'
+exports.KNEX_USER = 'postgres'
+exports.KNEX_PWD = 'cfMC0QKSa86EIbpBdqfk'
+exports.KNEX_DATABASE = 'railway'
+exports.PORT = 6436
 //
-//  Port & URL
+//  URL
 //
-exports.PORT = 10008
 exports.URL_TABLES = '/QuizTables'
 exports.URL_REGISTER = '/QuizRegister'
 exports.URL_SIGNIN = '/QuizSignin'
