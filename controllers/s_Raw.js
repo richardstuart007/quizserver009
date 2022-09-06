@@ -51,9 +51,9 @@ async function handleRaw(req, res, db, logCounter) {
     //
     const { sqlAction, sqlTable } = bodyParms
     //
-    //  Table to message
+    //  Table/Action to message
     //
-    if (sqlTable) logMessage = logMessage + ` sqlTable(${sqlTable})`
+    logMessage = logMessage + ` Table(${sqlTable}) ${sqlAction}`
     //
     //  Check Action passed
     //
@@ -106,7 +106,7 @@ async function handleRaw(req, res, db, logCounter) {
     //  Log return values
     //
     const records = Object.keys(returnObject.returnRows).length
-    logMessage = logMessage + ` records(${records})`
+    logMessage = logMessage + `(${records})`
     console.log(logMessage)
     return res.status(200).json(returnObject.returnRows)
     //
