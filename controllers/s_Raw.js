@@ -1,6 +1,7 @@
 //==================================================================================
 //= Process a RAW fetch request from server route
 //==================================================================================
+const { format } = require('date-fns')
 const s_Raw_handler = require('./s_Raw_handler')
 //
 // Constants
@@ -23,7 +24,12 @@ var returnObject = {
 //==================================================================================
 //= Get a row from a table : table, keyName, keyValue are passed in Body
 //==================================================================================
-async function handleRaw(req, res, db) {
+async function handleRaw(req, res, db, logCounter) {
+  //
+  //  Time Stamp
+  //
+  const TimeStamp = format(new Date(), 'yyLLddHHmmss')
+  let logMessage = `Handler. ${logCounter} Time:${TimeStamp}`
   try {
     //
     // Initialise Global Variables
@@ -78,18 +84,28 @@ async function handleRaw(req, res, db) {
     //  Return values
     //
     if (log) {
-      console.log(returnObject)
+      console.log(`HANDLER. ${logCounter} Time:${TimeStamp} ${returnObject}`)
     }
     const RowUpdate = returnObject.returnValue
     if (!RowUpdate) {
-      if (log) console.log(`Module ${reference} received No Data`)
+      if (log)
+        console.log(
+          `HANDLER. ${logCounter} Time:${TimeStamp} Module ${reference} received No Data`
+        )
     }
+    //
+    //  Log return values
+    //
+    const records = Object.keys(returnObject.returnRows).length
+    logMessage = logMessage + ` Records returned ${records}`
+    console.log(logMessage)
     return res.status(200).json(returnObject.returnRows)
     //
     // Errors
     //
   } catch (err) {
-    console.log(err.message)
+    logMessage = logMessage + ` Error(${err.message})`
+    console.log(logMessage)
     returnObject.returnCatch = true
     returnObject.returnCatchMsg = err.message
     returnObject.returnCatchFunction = CatchFunction

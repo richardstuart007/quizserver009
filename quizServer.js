@@ -66,12 +66,12 @@ app.use(cors())
 //.............................................................................
 app.post(URL_TABLES, (req, res) => {
   logRawTables(req, 'POST', 'RAW')
-  s_Raw.handleRaw(req, res, db)
+  s_Raw.handleRaw(req, res, db, logCounter)
 })
 
 app.delete(URL_TABLES, (req, res) => {
   logRawTables(req, 'DELETE', 'RAW')
-  s_Raw.handleRaw(req, res, db)
+  s_Raw.handleRaw(req, res, db, logCounter)
 })
 //.............................................................................
 //.  Routes - Register/SignIn
@@ -94,7 +94,7 @@ app.post(URL_REGISTER, (req, res) => {
 //.  Start Server
 //.............................................................................
 const TimeStamp = format(new Date(), 'yyLLddHHmmss')
-let logMessage = `${logCounter} Time:${TimeStamp} Quiz Server running on LOCAL PORT ${PORT}`
+let logMessage = `SERVER.. ${logCounter} Time:${TimeStamp} Quiz Server running on LOCAL PORT ${PORT}`
 app.listen(PORT, () => {
   console.log(logMessage)
 })
@@ -123,7 +123,7 @@ function logRawTables(req, fetchAction, fetchRoute) {
   //
   //  Format Message & Log
   //
-  let logMessage = `${logCounter} Time:${TimeStamp} sqlClient(${sqlClient}) fetchAction(${fetchAction}) fetchRoute(${fetchRoute}) sqlAction(${sqlAction}) `
+  let logMessage = `SERVER.. ${logCounter} Time:${TimeStamp} sqlClient(${sqlClient}) fetchAction(${fetchAction}) fetchRoute(${fetchRoute}) sqlAction(${sqlAction}) `
   if (sqlTable) logMessage = logMessage + ` sqlTable(${sqlTable}) `
   if (sqlString) logMessage = logMessage + ` sqlString(${sqlString}) `
   if (sqlWhere) logMessage = logMessage + ` sqlWhere(${sqlWhere}) `
@@ -151,7 +151,7 @@ function logRawSignIn(req, fetchAction) {
   //
   // Format message & Log
   //
-  let logMessage = `${logCounter} Time:${TimeStamp} sqlClient(${sqlClient}) fetchAction(${fetchAction}) Email(${email}) `
+  let logMessage = `SERVER.. ${logCounter} Time:${TimeStamp} sqlClient(${sqlClient}) fetchAction(${fetchAction}) Email(${email}) `
   if (name) logMessage.concat(` Name(${name})`)
   if (id) logMessage.concat(` ID(${id})`)
   console.log(logMessage)
