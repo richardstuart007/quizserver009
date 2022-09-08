@@ -30,7 +30,7 @@ const {
   KNEX_USER,
   KNEX_PWD,
   KNEX_DATABASE,
-  PORT,
+  URL_PORT,
   URL_SIGNIN,
   URL_TABLES,
   URL_REGISTER,
@@ -94,8 +94,8 @@ app.post(URL_REGISTER, (req, res) => {
 //.  Start Server
 //.............................................................................
 const TimeStamp = format(new Date(), 'yyLLddHHmmss')
-let logMessage = `SERVER.. ${logCounter} Time:${TimeStamp} Quiz Server running on PORT ${PORT}`
-app.listen(PORT, () => {
+let logMessage = `SERVER.. ${logCounter} Time:${TimeStamp} Quiz Server running on URL_PORT ${URL_PORT}`
+app.listen(URL_PORT, () => {
   console.log(logMessage)
 })
 //.............................................................................
