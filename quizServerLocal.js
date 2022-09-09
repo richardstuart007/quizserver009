@@ -20,40 +20,39 @@ const s_Profile = require('./controllers/s_Profile')
 //  Counter
 //
 let logCounter = 0
+const quizserver = 'quizServerLocal'
 //
 // Constants
 //
 const {
-  KNEX_PORT,
-  KNEX_CLIENT,
-  KNEX_HOST,
-  KNEX_USER,
-  KNEX_PWD,
-  KNEX_DATABASE,
-  URL_PORT,
+  LOCAL_KNEX_CLIENT,
+  LOCAL_KNEX_HOST,
+  LOCAL_KNEX_USER,
+  LOCAL_KNEX_PWD,
+  LOCAL_KNEX_DATABASE,
+  LOCAL_URL_PORT,
   URL_SIGNIN,
   URL_TABLES,
   URL_REGISTER,
   URL_PROFILE
 } = require('./quizServerConstants.js')
 //
-// Knex
+// Knex (LOCAL)
 //
 const db = knex({
-  client: KNEX_CLIENT,
+  client: LOCAL_KNEX_CLIENT,
   connection: {
-    host: KNEX_HOST,
-    port: KNEX_PORT,
-    user: KNEX_USER,
-    password: KNEX_PWD,
-    database: KNEX_DATABASE
+    host: LOCAL_KNEX_HOST,
+    user: LOCAL_KNEX_USER,
+    password: LOCAL_KNEX_PWD,
+    database: LOCAL_KNEX_DATABASE
   }
 })
 //
 //
 //
 console.log(
-  `Database Connection==> Client(${KNEX_CLIENT}) host(${KNEX_HOST}) port(${KNEX_PORT}) user(${KNEX_USER}) database(${KNEX_DATABASE})`
+  `Database Connection==> Client(${LOCAL_KNEX_CLIENT}) host(${LOCAL_KNEX_HOST}) user(${LOCAL_KNEX_USER}) database(${LOCAL_KNEX_DATABASE})`
 )
 //
 // Express & Cors
@@ -94,8 +93,8 @@ app.post(URL_REGISTER, (req, res) => {
 //.  Start Server
 //.............................................................................
 const TimeStamp = format(new Date(), 'yyLLddHHmmss')
-let logMessage = `SERVER.. ${logCounter} Time:${TimeStamp} Quiz Server running on URL_PORT ${URL_PORT}`
-app.listen(URL_PORT, () => {
+let logMessage = `SERVER.. ${logCounter} Time:${TimeStamp} QuizServer(${quizserver}) running on PORT(${LOCAL_URL_PORT})`
+app.listen(LOCAL_URL_PORT, () => {
   console.log(logMessage)
 })
 //.............................................................................

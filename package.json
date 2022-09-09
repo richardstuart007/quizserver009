@@ -1,12 +1,14 @@
 {
   "name": "quizserver",
-  "homepage": "https://richardstuart007.github.io/quizserver008",
+  "homepage": "https://richardstuart007.github.io/quizserver009",
   "version": "1.9.0",
   "description": "Quiz Server",
   "main": "script.js",
   "scripts": {
-    "start": "node quizServer.js",
-    "devstart": "nodemon quizServer.js"
+    "start": "node quizServerRemote.js",
+    "startremote": "node quizServerRemote.js",
+    "startlocal": "node quizServerLocal.js",
+    "devstart": "nodemon quizServerLocal.js"
   },
   "author": "Richard",
   "license": "ISC",
