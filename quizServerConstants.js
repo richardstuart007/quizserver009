@@ -2,7 +2,7 @@
 //  Database (Railway)
 //
 exports.REMOTE_KNEX_CLIENT = 'pg'
-// exports.REMOTE_KNEX_PORT = 6436
+exports.REMOTE_KNEX_PORT = 6436
 exports.REMOTE_KNEX_HOST = 'containers-us-west-71.railway.app'
 exports.REMOTE_KNEX_USER = 'postgres'
 exports.REMOTE_KNEX_PWD = 'cfMC0QKSa86EIbpBdqfk'

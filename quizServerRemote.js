@@ -25,7 +25,7 @@ const quizserver = 'quizServerRemote'
 // Constants
 //
 const {
-  // REMOTE_KNEX_PORT,
+  REMOTE_KNEX_PORT,
   REMOTE_KNEX_CLIENT,
   REMOTE_KNEX_HOST,
   REMOTE_KNEX_USER,
@@ -44,7 +44,7 @@ const db = knex({
   client: REMOTE_KNEX_CLIENT,
   connection: {
     host: REMOTE_KNEX_HOST,
-    // port: REMOTE_KNEX_PORT,
+    port: REMOTE_KNEX_PORT,
     user: REMOTE_KNEX_USER,
     password: REMOTE_KNEX_PWD,
     database: REMOTE_KNEX_DATABASE
@@ -52,12 +52,9 @@ const db = knex({
 })
 //
 //
-//
-// console.log(
-//   `Database Connection==> Client(${REMOTE_KNEX_CLIENT}) host(${REMOTE_KNEX_HOST}) port(${REMOTE_KNEX_PORT}) user(${REMOTE_KNEX_USER}) database(${REMOTE_KNEX_DATABASE})`
-// )
+
 console.log(
-  `Database Connection==> Client(${REMOTE_KNEX_CLIENT}) host(${REMOTE_KNEX_HOST}) user(${REMOTE_KNEX_USER}) database(${REMOTE_KNEX_DATABASE})`
+  `Database Connection==> Client(${REMOTE_KNEX_CLIENT}) host(${REMOTE_KNEX_HOST}) port(${REMOTE_KNEX_PORT}) user(${REMOTE_KNEX_USER}) database(${REMOTE_KNEX_DATABASE})`
 )
 //
 // Express & Cors
