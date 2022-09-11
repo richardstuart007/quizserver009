@@ -150,7 +150,7 @@ function logRawSignIn(req, fetchAction) {
   //
   //  Counter
   //
-  const TimeStamp = format(new Date(), 'HHmmss')
+  const TimeStamp = format(new Date(), 'yyLLddHHmmss')
   logCounter = logCounter + 1
   //
   // Format message & Log
