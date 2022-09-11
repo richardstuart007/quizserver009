@@ -6,7 +6,7 @@
   "main": "script.js",
   "scripts": {
     "start": "node quizServerRemote.js",
-    "startlocalremote": "node quizServerRemote.js",
+    "startlocalremote": "node quizServerLocalRemote.js",
     "startlocal": "node quizServerLocal.js",
     "devstart": "nodemon quizServerLocal.js"
   },
